@@ -1,7 +1,7 @@
 import React from 'react'
 
 // import router
-import Link from 'next/link'
+import Link from '../../node_modules/next/link';
 
 const Navbar = () => {
     return (

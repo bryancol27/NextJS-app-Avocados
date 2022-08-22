@@ -4,16 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev:inspect": "npm --node-options=--inspect=0.0.0.0:9229 run dev",
     "dev": "next",
     "build": "next build",
-    "start": "next start" 
+    "start": "next start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^18.7.6",
+    "@types/react": "^18.0.17",
     "next": "^12.2.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "typescript": "^4.7.4"
   }
 }

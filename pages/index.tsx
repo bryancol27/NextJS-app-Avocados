@@ -6,21 +6,28 @@ import { AvoListLayout } from 'containers/AvoList';
 //import components
 import { AvoCard } from '@components/AvoCard';
 
-const Home = () => {
+//Data fetch changes for Server Pre fetching
+const dev = process.env.NODE_ENV !== 'production';
+const urlFech = dev ? 'http://localhost:3000/' : 'https://next-js-app-avocados.vercel.app/';
 
-    const [avoList, setAvoList] = useState<TProduct[]>([]);
+export const getServerSideProps = async () => {
+    const response = await fetch(`${urlFech}api/avo`);
+    const data: TAPIAvoResponse = await response.json();
 
-    useEffect(() => {
-        fetch('/api/avo')
-            .then(res => res.json())
-            .then(({ allEntries }) => setAvoList(allEntries))
-    }, [])
+    return {
+        props: {
+            data,
+        }
+    }
+};
 
-    console.log(avoList)
+const Home = ({ data }) => {
+
+    const { length, allEntries } = data;
 
     return (
             <AvoListLayout>
-                { avoList.map(product => <AvoCard key={product.id} avoCurrent={product}/>) }
+                { allEntries.map(product => <AvoCard key={product.id} avoCurrent={product}/>) }
             </AvoListLayout>
     )
 };

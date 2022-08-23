@@ -4,8 +4,10 @@ import React from 'react';
 // import module Styles
 import styles from './styles.module.css'
 
-//it is a page which return a card with a tipade card in his props
+// Image component to optimize loads
+import Image from 'next/image';
 
+//it is a page which return a card with a tipade card in his props
 const AvoCard = (props: { avoCurrent: TProduct }) => {
     
     const { avoCurrent } = props;
@@ -29,10 +31,12 @@ const AvoCard = (props: { avoCurrent: TProduct }) => {
             </div>
 
             <figure className={styles.figure}>
-                <img 
+                <Image 
+                    width={320}
+                    height={320}
                     src={avoCurrent.image} 
                     alt={avoCurrent.name} 
-                    className={styles.img}/>
+                    />
             </figure>
 
             <Link

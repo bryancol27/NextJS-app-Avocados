@@ -4,7 +4,7 @@ export default function Document() {
     return (
         <Html>
         <Head>
-            <title>Hola mundo</title>
+            <title>🥑Avocados-Store</title>
         </Head>
             <body>
                 <Main />

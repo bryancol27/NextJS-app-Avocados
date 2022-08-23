@@ -1,32 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from '../../node_modules/next/router';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 //import container
 import { AvoDescription } from '@containers/AvoDescription/index';
 
-const ProductItem = () => {
+//Data fetch changes for Server Pre fetching
+const dev = process.env.NODE_ENV !== 'production';
+const urlFech = dev ? 'http://localhost:3000/' : 'https://next-js-app-avocados.vercel.app/';
 
-    //Hook of next to get the current dinamic URL
-    const router = useRouter();
-    const { id } = router.query;
+//pre render data api
+export const getServerSideProps = async (context) => {
 
-    // state to fetch avo data from Api and loading state
-    const [ avoCurrent, setAvoCurrent ] = useState<TProduct>();
-    const [ loading, setLoading ] = useState(true);
+    console.log(context)
 
-    //fetch about avo target
-    useEffect(() => {
-        fetch(`/api/avo/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setAvoCurrent(data)
-                setLoading(false)
-            })
-            .catch(err => 'Hubo un error haciendo el fetch');
-    }, []);
+    const { id } = context.query;
+
+    const res = await fetch(`${urlFech}api/avo/${id}`)
+    const data = await res.json();
+    
+    return {
+        props: {
+            data,
+        }
+    }
+};
+
+const ProductItem = ( {data:  avoCurrent} ) => {
+
+    // state to see the loading state
+
+    const [ loading, setLoading ] = useState(false);
 
     //after the fetch you can see how the app render all of this avo product
-    return(
+    return( 
         <AvoDescription
             data={avoCurrent}
             loading={loading}

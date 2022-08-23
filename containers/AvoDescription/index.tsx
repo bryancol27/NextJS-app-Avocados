@@ -12,28 +12,20 @@ interface config {
 
 const AvoDescription = ( props: config ) => {
 
-    const { data, loading } = props;
+    const { data } = props;
 
     return (
         <main className={styles.main}>
             <h1>About this Avocado</h1>
 
-            {loading 
-                ?<h1>Loading data</h1>
-                
-                : (
-                    <AvoHeaderDes
-                        name={data.name}
-                        price={data.price}
-                        image={data.image}
-                        id={data.id}
-                        description={data.attributes.description}
-                    />
-                )
-            }
-                    
-            
-                
+            <AvoHeaderDes
+                name={data.name}
+                price={data.price}
+                image={data.image}
+                id={data.id}
+                description={data.attributes.description}
+            />
+
         </main>
     )
 } ;

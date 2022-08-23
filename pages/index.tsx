@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from 'react';
 
+//import container
+import { AvoListLayout } from 'containers/AvoList';
+
+//import components
+import { AvoCard } from '@components/AvoCard';
+
 const Home = () => {
 
-    const [avoList, setAvoList] = useState([]);
+    const [avoList, setAvoList] = useState<TProduct[]>([]);
 
     useEffect(() => {
-        window.fetch('/api/avo')
+        fetch('/api/avo')
             .then(res => res.json())
-            .then(({ allEntries, lenght }) => setAvoList(allEntries))
+            .then(({ allEntries }) => setAvoList(allEntries))
     }, [])
 
+    console.log(avoList)
+
     return (
-        <div>
-            { avoList.map(product => <div key={product.id}>{product.name}</div>) }
-        </div>
+            <AvoListLayout>
+                { avoList.map(product => <AvoCard key={product.id} avoCurrent={product}/>) }
+            </AvoListLayout>
     )
 };
 

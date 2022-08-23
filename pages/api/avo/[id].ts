@@ -10,7 +10,7 @@ const allAvos = async(req:NextApiRequest, res: NextApiResponse) => {
 
     res.statusCode = 200;
     res.setHeader('Content-type', 'application/json')
-    res.end(JSON.stringify({ entry }))
+    res.end(JSON.stringify({ ...entry }))
 };
 
 export default allAvos

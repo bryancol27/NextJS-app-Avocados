@@ -1,0 +1,20 @@
+.main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    
+    width: 100%;
+    padding: 0 25px;
+}
+
+.main h1{
+    width: 80%;
+    margin: 25px 0;
+    padding-bottom: 25px;
+    text-align: center;
+    font-size: 25px;
+    color: var(--green-principal);
+    font-style: italic;
+    border-bottom: 2px dashed var(--green-principal);
+}

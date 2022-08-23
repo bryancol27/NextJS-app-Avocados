@@ -1,0 +1,26 @@
+.home__container_title{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home__container_title img{
+    width: 75px;
+}
+
+.home__container_title h2{
+    font-size: 3rem;
+    color: var(--green-principal);
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    row-gap: 50px;
+    column-gap: 25px;
+    padding: 50px;
+}

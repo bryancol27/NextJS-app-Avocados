@@ -1,0 +1,14 @@
+:root{
+    --green-principal: #606c38;
+    --green-secondary: #283618;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}

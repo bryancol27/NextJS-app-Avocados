@@ -8,7 +8,8 @@
     ],
     "paths": {
       "@database": [ "database/db.ts" ],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@containers/*": ["containers/*"]
     },
     "baseUrl": "./",
     "allowJs": true,
